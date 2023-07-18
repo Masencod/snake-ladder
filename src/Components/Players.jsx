@@ -31,6 +31,7 @@ export default function Players() {
   ];
   const [positions, setPositions] = useState({});
   const [players, setPlayers] = useState(defaultPlayers);
+  const [activePlayer, setActivePlayer] = useState(players[0])
   const [isOpenModal, setIsOpenModal] = useState(true);
   const [playerAmount, setPlayerAmount] = useState(2);
 
@@ -53,7 +54,7 @@ export default function Players() {
   };
 
   useEffect(() => {
-    console.log(players);
+    console.log(activePlayer);
   }, [players]);
 
   return (
@@ -70,7 +71,7 @@ export default function Players() {
             <select
               className="bg-gray-300 rounded-lg px-3"
               name="player amount"
-              onSelect={({ target }) => {
+              onChange={({ target }) => {
                 setPlayerAmount(target.value);
               }}
             >
@@ -89,13 +90,20 @@ export default function Players() {
           </div>
         </div>
       </ReactModal>
-      <div className="mt-2">
-        <div className="flex gap-x-2">
+      <div className="flex justify-between mt-2 w-full">
+        <div className="flex flex-wrap flex-col flex-1 w-[100px] w-full gap-y-2">
           {players.map((e) => {
             return (
-              <img className="w-[5%]" key={e.id} src={e.img} alt="tokens" />
+              <img className="w-[10%]" key={e.id} src={e.img} alt="tokens" />
             )
           })}
+        </div>
+        <div className={`flex-1 text-${activePlayer.color}-500`}>
+          <p>{activePlayer.name}</p>
+        </div>
+        <div className="flex-1">
+          <div>awdawdadw</div>
+          <button>tasss</button>
         </div>
       </div>
     </div>

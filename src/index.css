@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.board {
+  grid-template-rows: repeat(10, minmax(0, 1fr));
+}
+.rows {
+  grid-template-columns: repeat(10 , minmax(0, 1fr));
+}
